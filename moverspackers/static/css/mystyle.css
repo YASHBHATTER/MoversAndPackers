@@ -1,0 +1,16 @@
+.nav-link{
+    color: white !important;
+}
+
+.nav-link:hover{
+    background-color: red ;
+    color: yellow !important;
+    border-radius: 15px;
+}
+.nav-bar-brand{
+    font-weight: bold;
+}
+.active{
+    background-color: orange;
+    border-radius: 30px;
+}
