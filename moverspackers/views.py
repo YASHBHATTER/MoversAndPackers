@@ -86,3 +86,7 @@ def delete_service(request,pid):
     service = Services.objects.get(id = pid)
     service.delete()
     return redirect('manage_services')
+
+def services(request):
+    services = Services.objects.all()
+    return render(request,'services.html',locals())

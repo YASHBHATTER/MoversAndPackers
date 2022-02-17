@@ -30,5 +30,5 @@ urlpatterns = [
     path('manage_services',manage_services,name="manage_services"),
     path('edit_service/<int:pid>',edit_service,name="edit_service"),
     path('delete_service/<int:pid>',delete_service,name="delete_service"),
-
+    path('services',services,name="services"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
