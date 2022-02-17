@@ -27,5 +27,8 @@ urlpatterns = [
     path('admin_home',admin_home,name="admin_home"),
     path('logout',Logout,name="logout"),
     path('add_services',add_services,name="add_services"),
+    path('manage_services',manage_services,name="manage_services"),
+    path('edit_service/<int:pid>',edit_service,name="edit_service"),
+    path('delete_service/<int:pid>',delete_service,name="delete_service"),
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

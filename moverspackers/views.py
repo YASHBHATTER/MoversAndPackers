@@ -48,3 +48,41 @@ def add_services(request):
             error="yes"
     return render(request,'add_services.html',locals())
 
+def manage_services(request):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    services = Services.objects.all()
+
+    return render(request,'manage_services.html',locals())
+
+def edit_service(request,pid):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    error = ""
+    service = Services.objects.get(id = pid)
+    if request.method == "POST":
+        st = request.POST['servicetitle']
+        des = request.POST['description']
+
+
+        service.title = st
+        service.description = des
+
+        try:
+            service.save()
+            error = "no"
+        except:
+            error = "yes"
+        try:
+            image = request.FILES['image']
+            service.image = image
+            service.save()
+        except:
+            pass
+
+    return render(request,'edit_service.html',locals())
+
+def delete_service(request,pid):
+    service = Services.objects.get(id = pid)
+    service.delete()
+    return redirect('manage_services')
