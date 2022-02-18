@@ -90,3 +90,6 @@ def delete_service(request,pid):
 def services(request):
     services = Services.objects.all()
     return render(request,'services.html',locals())
+
+def about(request):
+    return render(request,'about.html')

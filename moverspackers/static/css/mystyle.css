@@ -26,3 +26,50 @@
     text-transform: uppercase;
 
 }
+
+/* ABOUT PAGE CSS START  */
+.section-subtitle{
+    margin-bottom: 7px;
+    padding-left: 7px;
+    text-transform: uppercase;
+    color: #aaaaaa;
+    font-size: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-left: 3px solid #aaaaaa;
+    line-height: 1;
+}
+.section-main-title{
+    margin-top: 30px;
+    margin-bottom: 35px;
+    font-size: 30px;
+    color: rgb(17, 184, 106);
+    text-shadow:
+        0 0 7px rgb(122, 255, 105),
+        0 0 10px rgb(52, 233, 36),
+        0 0 21px rgb(202, 255, 10),
+        0 0 42px #0fa,
+        0 0 2px #0fa,
+        0 0 92px #0fa,
+        0 0 50px #0fa,
+        0 0 15px #0fa;
+
+}
+.about-box{
+    width: 100%;
+    box-shadow: 0 0 0 5px #000 inset;
+    margin-right: 0;
+    margin-top: 0;
+    position: relative;
+    display: block;
+}
+
+
+.about-box img{
+    width: 100%;
+    transform: translateY(30px) translateX(-30px);
+   
+
+}
+
+
+/* ABOUT PAGE CSS END  */
