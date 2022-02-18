@@ -1,0 +1,113 @@
+{% include 'header.html' %}
+{% load static %}
+
+<header class="container-fluid" style="border: 1px solid yellow;">
+
+</header>
+<nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">HOME</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Request Quote</li>
+    </ul>
+</nav>
+
+<div class="card shadow  container mb-5">
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange;">Request Quote</h5>
+
+        <div class="container-fluid">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Name">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Contact No</label>
+                            <input type="text" name="contact" class="form-control" placeholder="Contact Number">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Where do you want the packers and movers service?</label>
+                            <input type="text" name="location" class="form-control"
+                                placeholder="Where do you want the packers and movers service?">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Where are you shifting?</label>
+                            <input type="text" name="shiftingloc" class="form-control"
+                                placeholder="Where are you shifting? ">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Date of shifting</label>
+                            <input type="date" name="shiftingdate" class="form-control">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>What do you want to shift?</label>
+                            <select  name="briefitems" class="form-control">
+                                <option value="">Select</option>
+                                <option value="1 BHK">1 BHK</option>
+                                <option value="2 BHK">2 BHK</option>
+                                <option value="3 BHK">3 BHK</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Please mention all the items that you are willing to shift?</label>
+                          <textarea name="items" class="form-control" placeholder="Please mention all the items that you are willing to shift?"></textarea>
+
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Submit" class="m-2 px-3 btn btn-primary">
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% if error == 'no' %}
+<script>
+    alert("Your request has been sent. We will contact you soon");
+    window.location = ('{% url "request_quote" %}');
+
+</script>
+{% endif %}
+{% if error == 'yes' %}
+<script>
+    alert("Invalid")
+</script>
+{% endif %}

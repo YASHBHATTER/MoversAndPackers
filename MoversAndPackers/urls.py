@@ -32,4 +32,7 @@ urlpatterns = [
     path('delete_service/<int:pid>',delete_service,name="delete_service"),
     path('services',services,name="services"),
     path('about',about,name="about"),
+    path('request_quote',request_quote,name="request_quote"),
+    path('new_booking',new_booking,name="new_booking"),
+    path('view_bookingdetail/<int:pid>',view_bookingdetail,name="view_bookingdetail"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

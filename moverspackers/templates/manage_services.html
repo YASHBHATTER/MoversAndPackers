@@ -35,18 +35,7 @@
     </div>
 </div>
 
-{% if error == 'no' %}
-<script>
-    alert("Service has benn added");
-    window.location = ('{% url "manage_services" %}');
 
-</script>
-{% endif %}
-{% if error == 'yes' %}
-<script>
-    alert("Invalid")
-</script>
-{% endif %}
 
 
 {% endblock %}

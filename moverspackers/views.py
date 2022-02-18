@@ -2,6 +2,7 @@ from distutils.log import error
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate,login,logout
 from .models import *
+from datetime import date
 
 # Create your views here.
 def index(request):
@@ -93,3 +94,48 @@ def services(request):
 
 def about(request):
     return render(request,'about.html')
+
+def request_quote(request):
+     error = ""
+     if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        contact = request.POST['contact']
+        location = request.POST['location']
+        shiftingloc = request.POST['shiftingloc']
+        shiftingdate = request.POST['shiftingdate']
+        briefitems = request.POST['briefitems']
+        items = request.POST['items']
+
+
+        try:
+            SiteUser.objects.create(name = name,email=email,mobile = contact,location=location,shiftinglocation=shiftingloc,
+            briefitems=briefitems,items = items,shiftingdate = shiftingdate,requestdate = date.today())
+            error = "no"
+        except:
+            error="yes"
+     return render(request,'request_quote.html',locals())
+
+def new_booking(request):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    booking = SiteUser.objects.filter(status = None)
+    return render(request,'new_booking.html',locals())
+
+def view_bookingdetail(request,pid):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    error = ""
+    booking = SiteUser.objects.get(id=pid)
+    if request.method == "POST":
+        remark = request.POST['remark']
+        try:
+            booking.remark = remark
+            booking.status = '1'
+            booking.updationdate = date.today( )
+            booking.save()
+            error = "no"
+        except:
+            error = "yes"
+
+    return render(request,'view_bookingdetail.html',locals())
