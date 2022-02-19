@@ -150,3 +150,6 @@ def delete_booking(request,pid):
     booking = SiteUser.objects.get(id = pid)
     booking.delete()
     return redirect('old_booking')
+
+def contact(request):
+    return render(request,'contact.html')

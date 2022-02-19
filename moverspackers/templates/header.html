@@ -22,17 +22,22 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'index' %}"><i class="fa fa-home"></i> Home</a>
+          <a class="nav-link {% if request.path == '/' %} active {% endif %} " href="{% url 'index' %}"><i class="fa fa-home"></i> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'services' %}"><i class="fa fa-sign-in-alt"></i> Services</a>
+          <a class="nav-link {% if request.path == '/services' %} active {% endif %} "  href="{% url 'services' %}"><i class="fa fa-sign-in-alt"></i> Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}"><i class="fa fa-sign-in-alt"></i>About</a>
+          <a class="nav-link {% if request.path == '/about' %} active {% endif %} "  href="{% url 'about' %}"><i class="fa fa-sign-in-alt"></i>About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'request_quote' %}"><i class="fa fa-sign-in-alt"></i>Request Quote</a>
+          <a class="nav-link {% if request.path == '/request_quote' %} active {% endif %} " href="{% url 'request_quote' %}"><i class="fa fa-sign-in-alt"></i>Request Quote</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/contact' %} active {% endif %} " href="{% url 'contact' %}"><i class="fa fa-sign-in-alt"></i>Contact</a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{% url 'admin_login' %}"><i class="fa fa-sign-in-alt"></i>Admin Login</a>
         </li>

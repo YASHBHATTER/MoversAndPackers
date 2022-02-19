@@ -37,4 +37,6 @@ urlpatterns = [
     path('view_bookingdetail/<int:pid>',view_bookingdetail,name="view_bookingdetail"),
     path('old_booking',old_booking,name="old_booking"),
     path('delete_booking/<int:pid>',delete_booking,name="delete_booking"),
+    path('contact',contact,name="contact"),
+
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
