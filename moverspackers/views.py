@@ -139,3 +139,14 @@ def view_bookingdetail(request,pid):
             error = "yes"
 
     return render(request,'view_bookingdetail.html',locals())
+
+def old_booking(request):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    booking = SiteUser.objects.filter(status = '1')
+    return render(request,'old_booking.html',locals())
+
+def delete_booking(request,pid):
+    booking = SiteUser.objects.get(id = pid)
+    booking.delete()
+    return redirect('old_booking')

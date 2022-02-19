@@ -35,4 +35,6 @@ urlpatterns = [
     path('request_quote',request_quote,name="request_quote"),
     path('new_booking',new_booking,name="new_booking"),
     path('view_bookingdetail/<int:pid>',view_bookingdetail,name="view_bookingdetail"),
+    path('old_booking',old_booking,name="old_booking"),
+    path('delete_booking/<int:pid>',delete_booking,name="delete_booking"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
