@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate,login,logout
 from .models import *
 from datetime import date
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
@@ -190,3 +191,14 @@ def delete_query(request,pid):
     contact = Contact.objects.get(id = pid)
     contact.delete()
     return redirect('read_queries')
+
+def search(request):
+    sd=None
+    if request.method == "POST":
+        sd = request.POST['searchdata']
+    try:
+        booking = SiteUser.objects.filter(Q(name=sd)|Q(mobile =sd) )
+    except:
+        booking = ""
+
+    return render(request,'search.html',locals())

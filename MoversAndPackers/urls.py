@@ -41,5 +41,6 @@ urlpatterns = [
     path('unread_queries',unread_queries,name="unread_queries"),
     path('read_queries',read_queries,name="read_queries"),
     path('view_queries/<int:pid>',view_queries,name="view_queries"),
-     path('delete_query/<int:pid>',delete_query,name="delete_query"),
+    path('delete_query/<int:pid>',delete_query,name="delete_query"),
+    path('search',search,name="search"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

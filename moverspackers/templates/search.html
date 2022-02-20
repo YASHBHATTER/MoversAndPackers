@@ -1,0 +1,68 @@
+{% extends 'admin_base.html' %}
+{% block main %}
+
+<div class="card shadow m-2">
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange;">Search Booking</h5>
+
+        <div class="container-fluid">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Search by Name or Mobile number</label>
+                            <input type="text" name="searchdata" class="form-control" placeholder="Enter Name/Mobile Number" required >
+
+                        </div>
+                    </div>
+                </div>
+
+                <input type="submit" value="Submit" class="m-2 px-3 btn btn-primary">
+            </form>
+            <h4 align = "center">
+
+            Result against {{sd}}
+            </h4>
+            <table class="table table-bordered" id="example">
+                <thead>
+                    <tr>
+                     <th>S No.</th>
+                     <th>Name</th>
+                     <th>Email</th>
+                     <th>Contact Number</th>
+                     <th>Action</th>
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                   {% for i in booking %}
+                   <tr>
+                       <td>{{forloop.counter}}</td>
+                       <td>{{i.name}}</td>
+                       <td>{{i.email}}</td>
+                       <td>{{i.mobile}}</td>
+                       <td><a href="{% url 'view_bookingdetail' i.id  %}">View Details</a>
+                    <a href="{% url 'delete_booking' i.id %}" class="text-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                   </tr>
+                   {% empty %}
+                   <tr>
+                       <td>
+                        No record Found against this search.
+
+                       </td>
+                   </tr>
+                   {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+      
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}
