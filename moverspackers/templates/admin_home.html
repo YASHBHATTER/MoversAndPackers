@@ -1,19 +1,92 @@
 {% extends 'admin_base.html' %}
 {% block main %}
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quibusdam, iusto cupiditate eum exercitationem mollitia.
-Officiis, et omnis! Vitae nisi doloremque officiis reprehenderit possimus perspiciatis? Quasi velit repellat molestiae
-aut.
-<h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nisi pariatur dicta, aspernatur corporis
-    praesentium distinctio suscipit, ratione blanditiis nobis accusantium tenetur doloribus. Fuga corporis nihil
-    veritatis, officia architecto recusandae.</h2>
+<div class="row">
+    <div class="col-sm-6 p-2">
+        <div class="card shadoww">
+            <div class="card-body">
+                <h4 class="text-success">
+                    Total Services
 
-<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, dolor?</p>
+                </h4>
+                <h5 align="center">
+                    {{totalservices}}
+                </h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'manage_services' %}">View --></a>
+            </div>
+        </div>
+    </div>
 
-<h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, sequi incidunt modi quia alias maiores ipsa qui.
-    A officiis culpa id, laboriosam error eius. Vero deserunt facilis quas, architecto aut enim ullam id laudantium
-    maxime, ipsa doloribus eveniet, voluptates perspiciatis ratione quod fugiat voluptatibus laboriosam nisi quae porro
-    nesciunt quisquam odit ad? Itaque inventore facilis aperiam hic debitis, aliquid molestiae nobis. Repellendus est
-    neque, eius consequuntur soluta odio, voluptate culpa ipsa doloribus fugit, nemo voluptatibus quia nostrum
-    laudantium accusantium laborum dolores commodi sunt et. Quis temporibus harum natus nulla ducimus? Ducimus excepturi
-    qui dicta veritatis facilis! Unde exercitationem quas modi?</h3>
+    <div class="col-sm-6 p-2">
+        <div class="card shadoww">
+            <div class="card-body">
+                <h4 class="text-success">
+                    Total Unread Queries
+
+                </h4>
+                <h5 align="center">
+                    {{totalunread}}
+                </h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'unread_queries' %}">View  --></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 p-2">
+        <div class="card shadoww">
+            <div class="card-body">
+                <h4 class="text-success">
+                    Total Read Queries
+
+                </h4>
+                <h5 align="center">
+                    {{totalread}}
+                </h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'read_queries' %}">View  --></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 p-2">
+        <div class="card shadoww">
+            <div class="card-body">
+                <h4 class="text-success">
+                    Total New Bookings
+
+                </h4>
+                <h5 align="center">
+                    {{totalnewbooking}}
+                </h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'new_booking' %}">View --></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 p-2">
+        <div class="card shadoww">
+            <div class="card-body">
+                <h4 class="text-success">
+                    Total Old Bookings
+
+                </h4>
+                <h5 align="center">
+                    {{totaloldbooking}}
+                </h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'old_booking' %}">View  --></a>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
 {% endblock %}

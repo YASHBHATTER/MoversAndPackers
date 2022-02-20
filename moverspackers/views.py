@@ -28,7 +28,13 @@ def admin_login(request):
 def admin_home(request):
     if not request.user.is_authenticated:
         return redirect('admin_login')
-    return render(request,'admin_home.html')
+    totalservices = Services.objects.all().count()
+    totalunread = Contact.objects.filter(isread="no").count()
+    totalread = Contact.objects.filter(isread="yes").count()
+    totalnewbooking = SiteUser.objects.filter(status=None).count()
+    totaloldbooking = SiteUser.objects.filter(status="1").count()
+    
+    return render(request,'admin_home.html',locals())
 
 def Logout(request):
     logout(request)
