@@ -152,4 +152,41 @@ def delete_booking(request,pid):
     return redirect('old_booking')
 
 def contact(request):
-    return render(request,'contact.html')
+    error = ""
+    if request.method == "POST":
+        n = request.POST['fullname']
+        c = request.POST['contact']
+        e = request.POST['email']
+        s = request.POST['subject']
+        m = request.POST['message']
+        try:
+            Contact.objects.create(name=n,contact=c,emailid=e,subject=s,message=m,mdate=date.today(),isread='no')
+            error = "no"
+        except:
+            error= "yes"
+    return render(request,'contact.html',locals())
+
+def unread_queries(request):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    contact = Contact.objects.filter(isread = "no")
+    return render(request,'unread_queries.html',locals())
+
+def read_queries(request):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    contact = Contact.objects.filter(isread = "yes")
+    return render(request,'read_queries.html',locals())
+
+def view_queries(request,pid):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    contact = Contact.objects.get(id=pid)
+    contact.isread = "yes"
+    contact.save()
+    return render(request,'view_queries.html',locals())
+
+def delete_query(request,pid):
+    contact = Contact.objects.get(id = pid)
+    contact.delete()
+    return redirect('read_queries')

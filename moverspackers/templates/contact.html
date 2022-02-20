@@ -103,3 +103,16 @@
 </body>
 
 </html>
+
+{% if error == 'no' %}
+<script>
+        alert("Message has been sent successfully...");
+    window.location = ('{% url "contact" %}');
+
+</script>
+{% endif %}
+{% if error == 'yes' %}
+<script>
+    alert("Invalid")
+</script>
+{% endif %}
